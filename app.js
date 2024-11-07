@@ -9,7 +9,7 @@ copyButton.addEventListener("click", copyToClipboard);
 
 async function getPlaylistInformation() {
   const url = listInput.value.trim();
-  const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/playlist\?list=|^)([a-zA-Z0-9_-]{16,})/;
+  const regex = /(?:playlist\?list=|\/playlist\?list=|(?:\?|\&)list=)([a-zA-Z0-9_-]{16,})/;
 
   const playlistID = url.match(regex);
   
