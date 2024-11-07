@@ -1,0 +1,104 @@
+/*********** css reset **********/
+
+* {
+  min-width: 0;
+  font: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+  background-color: red;
+  color: white;
+  line-height: 1;
+  font-weight: 300;
+  overflow-x: hidden;
+  margin: 0;
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 auto;
+  width: 75%;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: bold;
+
+  text-align: center;
+}
+
+p {
+  font-size: 5rem;
+  white-space: pre-wrap;
+}
+
+input {
+  font-size: 3rem;
+}
+
+.button-container {
+  margin: 0 auto;
+}
+
+#fetch-status{
+  margin: 20px auto;
+  text-align: center;
+}
+
+#submit-link-button,
+#copy-clipboard-button {
+  width: fit-content;
+  font-size: 4rem;
+  padding: 2rem;
+  border-radius: 3px;
+}
+
+#copy-clipboard-button {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+#formatted-output {
+  background-color: gray;
+  font-size: 3rem;
+  padding: 2rem;
+  border-radius: 3px;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer type="module"></script>
+  <title>Video embed generator</title>
+</head>
+<body>
+  <div class="app-container">
+    <h1>Ulti-mate video embedder</h1>
+    <p><label for="list">Link to the playlist:</label></p>
+    <input id="list-input" name="list" placeholder="Paste the link to the Youtube Playlist right here"></input>
+    <br>
+    <div class="button-container">
+      <button id="submit-link-button">Fetch playlist!</button>
+    </div>
+    <br>
+    <p>Output:</p>
+    <p id="fetch-status"></p>
+    <p id="formatted-output">Here is where the output will display</p>
+    <button id="copy-clipboard-button">Copy to Clipboard</button>
+  </div>
+</body>
+</html>
