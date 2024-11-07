@@ -19,23 +19,49 @@ async function getPlaylistInformation() {
   }
   statusText.textContent = "Loading...";
   const playlist = await fetchPlaylist(playlistID[1]);
-  console.log(playlist);
+
+  if (playlist.status.http_code == 404){
+    statusText.textContent = "Playlist not found! Verify the URL is correct";
+    console.error(playlist.contents);
+    return
+  }
+
+  if (playlist.status.http_code == 403){
+    statusText.textContent = "Playlist forbidden! You can't fetch from the Watch later or History playlists";
+    console.error(playlist.contents);
+    return
+  }
+
+  startFormatting(JSON.parse(playlist.contents));
 }
 
-async function fetchPlaylist(playlistID){
+function startFormatting(videoData){
+  iframesOutput.textContent = ""
+  videoData.items.forEach(video => {
+    if (video.status.privacyStatus != 'public') return
+    iframesOutput.textContent += `<iframe width="560" height="315" src="https://youtube.com/embed/${video.contentDetails.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br>\n\n`
+  });
+  statusText.textContent = "Here's your code!";
+}
 
-  const response = await fetch("https://www.googleapis.com/youtube/v3/playlistItems&key=AIzaSyA7lJQiUbPBizcZA4nd7yYlcVFnPAuTbrA", {
-    method: 'GET',
-    parameters: JSON.stringify({
-      part: [
-        'contentDetails',
-        'status'
-      ],
-      playlistID: playlistID
-    })});
-  const data = await response.json();
+async function fetchPlaylist(playlistID) {
+  const apiKey = 'AIzaSyA7lJQiUbPBizcZA4nd7yYlcVFnPAuTbrA'; 
+  const url = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails,status&maxResults=50&playlistId=${playlistID}&key=${apiKey}`)}`;
 
-  return data
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error('Error trying to obtain playlist:', error);
+    return null;
+  }
 }
 
 function copyToClipboard() {
