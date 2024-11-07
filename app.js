@@ -65,10 +65,10 @@ async function fetchPlaylist(playlistID) {
 }
 
 function copyToClipboard() {
-  if (commentOutput.textContent == "Here is where the output will display") {
+  if (iframesOutput.textContent == "Here is where the output will display") {
     copyButton.textContent = "Nothing to copy!";
   } else {
-    navigator.clipboard.writeText(commentOutput.textContent);
+    navigator.clipboard.writeText(iframesOutput.textContent);
     copyButton.textContent = "Successfully copied!";
   }
   setTimeout(() => { copyButton.textContent = "Copy to Clipboard" }, 2000)
