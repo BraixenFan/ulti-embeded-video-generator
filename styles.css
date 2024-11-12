@@ -78,17 +78,33 @@ input {
   margin: 0 auto;
 }
 
+.pagination-container{
+  display: grid;
+  width: 100%;
+
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 #fetch-status{
   margin: 20px auto;
   text-align: center;
 }
 
 #submit-link-button,
-#copy-clipboard-button {
+#copy-clipboard-button,
+.page-bttn {
   width: fit-content;
   font-size: 4rem;
   padding: 2rem;
   border-radius: 3px;
+}
+
+.next-page-bttn{
+  grid-column: 4;
+}
+
+.previous-page-bttn{
+  grid-column: 1;
 }
 
 #copy-clipboard-button {
